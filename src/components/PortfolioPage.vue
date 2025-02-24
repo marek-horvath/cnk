@@ -158,7 +158,7 @@ li {
 }
 
 .nav-logo img {
-  height: 40px;
+  height: 100px;
 }
 
 .nav-menu {
