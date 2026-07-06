@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "particles.js": "^2.0.0",
-    "vue": "^3.2.13",
-    "vue3-particles": "^2.12.0"
+    "vue": "^3.2.13"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -27,7 +25,9 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "browser": true,
+      "vue/setup-compiler-macros": true
     },
     "extends": [
       "plugin:vue/vue3-essential",

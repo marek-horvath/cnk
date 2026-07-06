@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <title>Cloud Native Kosice</title>
+    <script>
+      (function () {
+        var basePath = '/cnk'
+        var path = window.location.pathname.replace(/\/$/, '')
+        var route = path === basePath + '/admin' || path === '/admin' ? '?route=admin' : ''
+
+        window.location.replace(basePath + '/' + route)
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

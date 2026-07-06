@@ -1,0 +1,405 @@
+const defaultVenue = 'Aurora (5. floor), TUKE'
+const defaultAddress = 'Letna 9, Kosice'
+
+function createEvent({
+  number,
+  date = '',
+  time = '17:00',
+  title,
+  subtitle,
+  intro,
+  summary,
+  talks,
+  demoPoints,
+  tags,
+  venue = defaultVenue,
+  address = defaultAddress
+}) {
+  return {
+    id: `meetup-${number}`,
+    number,
+    title,
+    subtitle,
+    status: 'past',
+    featured: false,
+    isTba: false,
+    date,
+    time,
+    venue,
+    address,
+    intro,
+    summary,
+    talks,
+    demoPoints,
+    tags
+  }
+}
+
+export const defaultSettings = {
+  id: 'site',
+  name: 'Cloud Native Kosice',
+  tagline: 'Komunita pre Kubernetes a cloud-native nadsencov v Kosiciach.',
+  description:
+    'Organizujeme komunitne meetupy a eventy, kde si ludia z praxe vymienaju skusenosti s Kubernetes, platform engineeringom, observability, GitOps a modernou prevadzkou aplikacii.',
+  industry: 'Technologie, cloud-native, Kubernetes',
+  location: 'Kosice',
+  organizer: 'Cloud Native Kosice komunita',
+  contactLabel: 'Cloud Native Kosice'
+}
+
+export const defaultEvents = [
+  {
+    id: 'meetup-12-next',
+    number: 12,
+    title: 'Cloud Native Kosice Meetups',
+    subtitle: '',
+    status: 'upcoming',
+    featured: true,
+    isTba: true,
+    date: '',
+    time: 'TBA',
+    venue: defaultVenue,
+    address: defaultAddress,
+    intro:
+      'Momentane nie je naplanovana ziadna konkretna akcia. Meetup #12 pripravujeme a termin zverejnime po potvrdeni.',
+    summary:
+      'Ak chces dostat informaciu o dalsej akcii medzi prvymi, nechaj nam email. Posleme ti pozvanku, ked bude termin a agenda potvrdena.',
+    talks: [],
+    demoPoints: [],
+    tags: ['Kubernetes', 'Cloud Native', 'Kosice', 'Meetup']
+  },
+  createEvent({
+    number: 11,
+    date: '2026-06-04',
+    title: 'Cloud Native Kosice Meetup #11',
+    subtitle: 'Zhrnutie KCD Czech & Slovak a prakticka cast kubectl',
+    intro: 'Jedenasty meetup priniesol cerstve postrehy z KCD Czech & Slovak v Prahe a prakticky pohlad na kubectl.',
+    summary:
+      'Boli sme na KCD Czech & Slovak v Prahe a vybrali sme najzaujimavejsie momenty, trendy a atmosferu z konferencie. Druha cast patrila kubectl funkciam, ktore sa pri dennej praci casto prehliadaju.',
+    talks: [
+      {
+        title: 'Boli sme na KCD Czech & Slovak',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Zhrnutie najzaujimavejsich momentov, trendov a diskusii z jednej z najvacsich Kubernetes udalosti v regione.'
+      },
+      {
+        title: 'kubectl: co ste o nom este nevedeli',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Prakticke ukazky JSONPath, Go Templates, kubectl debug, kubectl explain, Server-Side Apply, Krew pluginov a migracie Secretov medzi namespace-mi.'
+      }
+    ],
+    demoPoints: [
+      'JSONPath a Go Templates',
+      'kubectl debug a kubectl explain',
+      'Server-Side Apply',
+      'Krew pluginy a migracia Secretov'
+    ],
+    tags: ['KCD', 'kubectl', 'Kubernetes']
+  }),
+  createEvent({
+    number: 10,
+    date: '2026-02-26',
+    title: 'Cloud Native Kosice Meetup #10',
+    subtitle: 'Podman Desktop na Windowse a Testcontainers',
+    intro: 'Desiaty meetup sa venoval lokalnemu kontajnerovemu vyvoju na Windowse a realistickejsiemu testovaniu aplikacii.',
+    summary:
+      'Ukazali sme, ako si jednoducho rozbehnut Podman Desktop na Windowse spolu s WSL2 a ako Testcontainers pomahaju nahradit krehke mocky realnou docasnou infrastrukturou v Dockeri.',
+    talks: [
+      {
+        title: 'Podman Desktop na Windowse',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Open-source alternativa k Docker Desktopu, pouzitie Linux kontajnerov na Windowse a prakticke nastavenie cez WSL2.'
+      },
+      {
+        title: 'Testcontainers namiesto krehkych mockov',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Vzory pouzitia multi-jazykovej kniznice Testcontainers, kompromisy a tipy, ako udrzat testy realisticke aj rychle.'
+      }
+    ],
+    demoPoints: [
+      'Podman Desktop a WSL2',
+      'Linux kontajnery na Windowse',
+      'Realne zavislosti v testoch',
+      'Rychlejsie a doveryhodnejsie testovanie'
+    ],
+    tags: ['Podman', 'Testcontainers', 'Windows']
+  }),
+  createEvent({
+    number: 9,
+    date: '2025-12-04',
+    title: 'Cloud Native Kosice Meetup #9',
+    subtitle: 'Podman Desktop na Windowse a prve kroky v GitLabe',
+    intro: 'Deviaty meetup spojil kontajnerovy development na Windowse s uvodom do automatizacie cez GitLab CI/CD.',
+    summary:
+      'Prva cast ukazala Podman Desktop a WSL2 ako prakticku cestu pre Linux kontajnery na Windowse. Druha cast presla zakladnu GitLab pipeline od buildu cez testy az po Docker image a nasadenie do Kubernetes.',
+    talks: [
+      {
+        title: 'Podman Desktop na Windowse',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Jednoduchsie spustanie Linux kontajnerov na Windowse, nastavenie WSL2 a porovnanie zazitku s Docker Desktopom.'
+      },
+      {
+        title: 'CI/CD: prve kroky v GitLabe',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Vlastna pipeline v GitLabe, automaticky build, test, vytvorenie Docker image a priprava nasadenia do Kubernetes.'
+      }
+    ],
+    demoPoints: [
+      'Podman Desktop setup',
+      'Zakladny .gitlab-ci.yml',
+      'Build, test a Docker image',
+      'Uvod do nasadzovania do Kubernetes'
+    ],
+    tags: ['Podman', 'GitLab CI', 'CI/CD']
+  }),
+  createEvent({
+    number: 8,
+    date: '2025-05-15',
+    title: 'Cloud Native Kosice Meetup #8',
+    subtitle: 'Kubernetes Clusters as a Service a architektura Kubernetes',
+    intro: 'Osmicka sa pozrela na prevadzku viacerych Kubernetes klastrov a na principy architektury Kubernetes z pohladu vyvojara.',
+    summary:
+      'Diskutovali sme, ako ponukat Kubernetes ako sluzbu spolahlivo, bezpecne a vo velkom. Druha prednaska ukazala, co si moze programator odniest z architektury Kubernetes pre backendy, mikrosluzby a event-driven systemy.',
+    talks: [
+      {
+        title: 'Kubernetes Clusters as a Service',
+        speaker: 'Jan Kukurugya',
+        abstract:
+          'Prevadzka desiatok klastrov napriec cloudmi, timami a prostrediami, so zameranim na spolahlivost, bezpecnost a skalovanie.'
+      },
+      {
+        title: 'Kubernetes architektura pre programatorov',
+        speaker: 'Zdenko Vrabel',
+        abstract:
+          'Principy Kubernetes architektury, ktore vedia inspirovat vyvoj backendov, mikrosluzieb a event-driven systemov.'
+      }
+    ],
+    demoPoints: [
+      'Multi-cluster prevadzka',
+      'Kubernetes ako sluzba',
+      'Architekturne principy pre vyvojarov',
+      'Diskusia z DevOps aj mimo DevOps sveta'
+    ],
+    tags: ['K8s as a Service', 'DevOps', 'Platform Engineering']
+  }),
+  createEvent({
+    number: 7,
+    date: '2025-03-13',
+    title: 'Cloud Native Kosice Meetup #7',
+    subtitle: 'API security s Traefik Labs',
+    intro: 'Siedmy meetup otvoril rok 2025 specialnym hostom z Traefik Labs a hlbokym ponorom do API security.',
+    summary:
+      'Immanuel Fodor priniesol do Kosic prakticky pohlad na zabezpecenie API, cloud-native WAF, API governance a konfiguraciu cez GitOps. Meetup bol vedeny v anglictine.',
+    talks: [
+      {
+        title: 'Bezpecnost API vo velkom',
+        speaker: 'Immanuel Fodor, Traefik Labs',
+        abstract:
+          'Strategie na ochranu API gatewayov, OWASP Top 10 hrozby, nove rizika a principy bezpecnosti API vo vacsom rozsahu.'
+      },
+      {
+        title: 'Prakticke konfiguracie a live demo',
+        speaker: 'Immanuel Fodor, Traefik Labs',
+        abstract:
+          'Ukazky cloud-native WAF, konfiguracie ako kod, GitOps postupy a odporucania pre bezpecne skalovanie API.'
+      }
+    ],
+    demoPoints: [
+      'Zabezpecenie API gatewayov',
+      'OWASP Top 10 ochrana',
+      'Cloud-native WAF',
+      'GitOps konfiguracia'
+    ],
+    tags: ['Bezpecnost API', 'Traefik Labs', 'GitOps']
+  }),
+  createEvent({
+    number: 6,
+    date: '2024-12-17',
+    title: 'Cloud Native Kosice vianocny meetup #6',
+    subtitle: 'Vianocne komunitne posedenie',
+    intro: 'Siesty meetup bol neformalne koncorocne stretnutie komunity Cloud Native Kosice.',
+    summary:
+      'Stretli sme sa mimo klasickych prednasok, obzreli sa za rokom 2024, prepojili komunitu a uzili si neformalny networking v prijemnej atmosfere.',
+    talks: [
+      {
+        title: 'Retrospektiva roku 2024',
+        speaker: 'Cloud Native Kosice organizatori',
+        abstract:
+          'Spolocne zhrnutie udalosti, tem a momentov, ktore v roku 2024 posunuli komunitu dopredu.'
+      },
+      {
+        title: 'Komunitny networking',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Priestor na rozhovory, nove kontakty, napady na dalsie temy a planovanie dalsich stretnuti.'
+      }
+    ],
+    demoPoints: [
+      'Retrospektiva roka',
+      'Neformalne stretnutie',
+      'Networking',
+      'Napady na dalsie meetupy'
+    ],
+    tags: ['Komunita', 'Networking', 'Vianoce'],
+    venue: 'Dobre casy',
+    address: 'Cajkovskeho 4, Kosice'
+  }),
+  createEvent({
+    number: 5,
+    date: '2024-10-02',
+    title: 'Cloud Native Kosice Meetup #5',
+    subtitle: 'Helm a Gateway API',
+    intro: 'Piaty meetup bol navrat po letnej prestavke s dvojicou praktickych Kubernetes tem.',
+    summary:
+      'Pozreli sme sa na Helm ako sposob, ako zjednodusit nasadzovanie a spravu aplikacii, a na Gateway API ako modernu evoluciu smerovania prevadzky v Kubernetes.',
+    talks: [
+      {
+        title: 'Uvod do Helm',
+        speaker: 'Lukas',
+        abstract:
+          'Helm charty, opakovatelne nasadzovanie aplikacii a sprava konfiguracie tak, aby Kubernetes praca bola rychlejsia a menej chybova.'
+      },
+      {
+        title: 'Gateway API',
+        speaker: 'Zdenko',
+        abstract:
+          'Prekonanie limitov Ingressu, flexibilnejsie smerovanie externej prevadzky a prakticky pohlad na buducnost spravy prevadzky v Kubernetes.'
+      }
+    ],
+    demoPoints: [
+      'Helm charty',
+      'Nasadzovanie aplikacii',
+      'Gateway API koncepty',
+      'Networking po prednaskach'
+    ],
+    tags: ['Helm', 'Gateway API', 'Kubernetes']
+  }),
+  createEvent({
+    number: 4,
+    date: '2024-06-27',
+    title: 'Cloud Native Kosice Meetup #4',
+    subtitle: 'LINSTOR, Cozystack a prevadzka dat v Kubernetes',
+    intro: 'Stvrty meetup priniesol prveho zahranicneho speakera a bol vedeny v anglickom jazyku.',
+    summary:
+      'Andrej Kvapil predstavil prakticky pohlad na data v Kubernetes, LINSTOR, Cozystack a navrat k teme Ingressu a LoadBalancer nakladov u cloud providerov.',
+    talks: [
+      {
+        title: 'Data v Kubernetes s LINSTOR',
+        speaker: 'Andrej Kvapil',
+        abstract:
+          'Ako efektivne spravovat kriticke data v Kubernetes clustroch a preco storage potrebuje rovnako premyslenu prevadzku ako aplikacie.'
+      },
+      {
+        title: 'Cozystack, Ingress a LoadBalancer',
+        speaker: 'Andrej Kvapil',
+        abstract:
+          'Platforma na automaticke vytvaranie cloudov, plus prakticke tipy k Ingressu a setreniu nakladov na LoadBalancer.'
+      }
+    ],
+    demoPoints: [
+      'LINSTOR v Kubernetes',
+      'Cozystack',
+      'Ingress a LoadBalancer',
+      'Anglicky meetup'
+    ],
+    tags: ['LINSTOR', 'Cozystack', 'Storage']
+  }),
+  createEvent({
+    number: 3,
+    date: '2024-06-11',
+    title: 'Cloud Native Kosice Meetup #3',
+    subtitle: 'Prakticky uvod do Kubernetes a kubectl',
+    intro: 'Treti meetup bol urceny ludom, ktori si chceli Kubernetes vyskusat prakticky a pochopit zaklady cez priklady.',
+    summary:
+      'V prvej casti sme postupne vytvorili jednoduchy Kubernetes cluster a ukazali, ako ho rozsirit a pouzit. Druha cast patrila kubectl, Podom, deploymentom, sluzbam a aktualizaciam aplikacii.',
+    talks: [
+      {
+        title: 'Kubernetes od zakladov',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Jednoduche kroky k vytvoreniu zakladneho clustra, jeho rozsireniu a priprave na prakticke pouzitie.'
+      },
+      {
+        title: 'kubectl v praxi',
+        speaker: 'Mirek Binas',
+        abstract:
+          'Praca s Podmi, viacerymi replikami, vystavenim sluzby do internetu a aktualizaciou aplikacie pocas behu.'
+      }
+    ],
+    demoPoints: [
+      'Vytvorenie jednoducheho clustra',
+      'Pody a deploymenty',
+      'Sluzby a vystavenie aplikacie',
+      'kubectl prikazy'
+    ],
+    tags: ['Kubernetes', 'kubectl', 'Zaciatocnici']
+  }),
+  createEvent({
+    number: 2,
+    date: '2024-04-11',
+    title: 'Cloud Native Kosice Meetup #2',
+    subtitle: 'Docker Compose a zaklady Kubernetes',
+    intro: 'Druhy meetup predstavil zaklady riadenia kontajnerovych aplikacii cez Docker Compose a Kubernetes.',
+    summary:
+      'Docker Compose ukazal jednoduchu cestu k viac-kontajnerovemu prostrediu pre lokalny vyvoj. Kubernetes cast vysvetlila zaklady spravy kontajnerov vo vacsich produkcnych prostrediach a viacnodovy cluster na BeBy.cloud.',
+    talks: [
+      {
+        title: 'Docker Compose',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Definovanie a spustanie viac-kontajnerovych aplikacii pomocou jednoducheho konfiguracneho suboru.'
+      },
+      {
+        title: 'Zaklady Kubernetes',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Uvod do platformy na spravu kontajnerov, vytvorenie viacnodoveho Kubernetes clustra a zakladne produkcne atributy.'
+      }
+    ],
+    demoPoints: [
+      'Docker Compose konfiguracia',
+      'Viac-kontajnerove prostredie',
+      'Kubernetes zaklady',
+      'BeBy.cloud cluster'
+    ],
+    tags: ['Docker Compose', 'Kubernetes', 'Containers']
+  }),
+  createEvent({
+    number: 1,
+    date: '2023-12-05',
+    title: 'Cloud Native Kosice Meetup #1',
+    subtitle: 'Vstupna brana do cloud-native sveta',
+    intro: 'Prvy meetup otvoril lokalnu komunitu pre ludi, ktori sa chceli dozvediet viac o cloudovych technologiach a kontajneroch.',
+    summary:
+      'Start Cloud Native Kosice bol uvodom do kontajnerizacnych technologii ako vstupnej brany do cloudu a priestorom na prve stretnutie lokalnych nadsencov.',
+    talks: [
+      {
+        title: 'Preco cloud-native',
+        speaker: 'Cloud Native Kosice organizatori',
+        abstract:
+          'Zakladne motivacie, preco sa venovat cloudovym technologiach, kontajnerom a modernemu sposobu prevadzky aplikacii.'
+      },
+      {
+        title: 'Kontajnery ako vstup do cloudu',
+        speaker: 'Cloud Native Kosice komunita',
+        abstract:
+          'Uvod do kontajnerizacie a tem, ktore komunita planovala rozvijat na dalsich meetupoch.'
+      }
+    ],
+    demoPoints: [
+      'Start komunity',
+      'Cloud technologie',
+      'Kontajnerizacia',
+      'Priestor na diskusiu'
+    ],
+    tags: ['Komunita', 'Cloud Native', 'Kontajnery'],
+    venue: 'Zdruzena poslucharen 1, TUKE',
+    address: 'Kosice'
+  })
+]
