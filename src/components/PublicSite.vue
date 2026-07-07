@@ -93,6 +93,15 @@
             {{ archiveEvents.length }} starsich komunitnych eventov Cloud Native Kosice.
           </p>
 
+          <label class="history-picker" for="history-event">
+            <span>Vyber meetup</span>
+            <select id="history-event" v-model="activeArchiveId">
+              <option v-for="event in archiveEvents" :key="event.id" :value="event.id">
+                #{{ event.number }} - {{ event.subtitle }}
+              </option>
+            </select>
+          </label>
+
           <div class="history-layout">
             <div class="history-tabs" aria-label="Starsie eventy">
               <button
@@ -181,7 +190,7 @@ const isLoading = ref(true)
 const settings = ref({})
 const events = ref([])
 const activeArchiveId = ref('')
-const lastUpdated = '06.07.2026'
+const lastUpdated = '07.07.2026'
 const email = ref('')
 const signupMessage = ref('')
 const signupError = ref('')
@@ -677,6 +686,10 @@ h3 {
   text-align: left;
 }
 
+.history-picker {
+  display: none;
+}
+
 .history-tabs {
   display: grid;
   gap: 10px;
@@ -916,19 +929,116 @@ h3 {
     padding-right: 22px;
   }
 
+  .nav {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    padding-top: 18px;
+    padding-bottom: 8px;
+  }
+
+  .nav-logo {
+    display: grid;
+    width: 100%;
+    place-items: center;
+  }
+
   .nav-logo img {
-    width: 82px;
-    height: 82px;
+    width: 78px;
+    height: 78px;
+    margin: 0 auto;
   }
 
   .nav-menu {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 34px;
+    padding-bottom: 62px;
+  }
+
+  .hero-kicker {
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 22px;
+    font-size: 1.72rem;
+  }
+
+  h3 {
+    font-size: 1.02rem;
+  }
+
+  .hero-date,
+  .hero-place,
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .sessions,
+  .history,
+  .about,
+  .location {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .notify-panel {
+    gap: 20px;
+    margin-bottom: 26px;
+    padding: 20px;
+  }
+
+  .history-layout {
+    gap: 22px;
+  }
+
+  .history-picker {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 22px;
+    text-align: left;
+  }
+
+  .history-picker span {
+    color: #1c8d92;
+    font-family: 'Mokoto', Arial, sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .history-picker select {
     width: 100%;
+    min-height: 52px;
+    border: 2px solid #050a30;
+    border-radius: 0;
+    background: #ffffff;
+    color: #050a30;
+    padding: 0 12px;
+    font: inherit;
+    font-weight: 800;
+  }
+
+  .history-tabs {
+    display: none;
   }
 
   .history-detail {
     padding: 20px;
+    min-height: auto;
+  }
+
+  .footer-container,
+  .footer-meta {
+    justify-content: center;
+    text-align: center;
   }
 }
 </style>
